@@ -39,6 +39,12 @@
 					<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse" id="defaultNavbar1">
 							<ul class="nav navbar-nav">
+								<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gestión de Empleados<span class="caret"></span></a>
+									<ul class="dropdown-menu" role="menu">
+										<li><a href="CrearEmpleado.php">Crear Empleado</a></li>
+										<li><a href="Empleado.php">Lista de Empleados</a></li>	
+									</ul>
+								</li>
 								<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gestión de Usuarios<span class="caret"></span></a>
 									<ul class="dropdown-menu" role="menu">
 										<li><a href="#">Crear usuario</a></li>

@@ -47,3 +47,14 @@ CREATE OR REPLACE TABLE Usuario(
         ON DELETE CASCADE
         ON UPDATE NO ACTION
 );
+
+CREATE OR REPLACE TABLE Empleado(
+	idEmpleado				TINYINT			NOT NULL			PRIMARY KEY			AUTO_INCREMENT,
+	CodigoEmpleado			VARCHAR(15)		NOT NULL,
+	NombreEmpleado			VARCHAR(25)		NOT NULL,
+	ApellidoEmpleado		VARCHAR(25)		NOT NULL,
+    FechaNacEmpleado		DATE			NOT NULL,
+    TelefonoEmpleado		VARCHAR(30)		NOT NULL,
+    DireccionEmpleado		VARCHAR(50)		NOT NULL,
+    CorreoEmpleado			VARCHAR(50)		NOT NULL
+);
