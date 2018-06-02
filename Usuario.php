@@ -1,4 +1,4 @@
-<!--
+,,,,,,<!--
 	Módulo de creación de Usuarios
 	Gemis Daniel Guevara Villeda
 	Gustavo Rodolfo Arriaza
@@ -333,7 +333,7 @@
 									  DireccionUsuario = '".$DireccionEditar."',
 									  CorreoUsuario = '".$CorreoEditar."',
 									  idPuesto = ".$PuestoEditar.",
-									  idRol = ".$RolEditar.",
+									  idRol = ".$RolEditar."
 									WHERE idUsuario=".$idEditar.";";
 						
 						// Ejecutamos la consulta para la tabla de persona
