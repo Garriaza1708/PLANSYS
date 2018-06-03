@@ -16,7 +16,7 @@
 <!-- Bootstrap -->
 <link href="css/bootstrap.css" rel="stylesheet">
 <!-- se vincula al hoja de estilo para definir el aspecto del formulario de login -->
-<link rel="stylesheet" type="text/css" href="css/estilo.css"> 
+<link rel="stylesheet" type="text/css" href="css/Modal.css"> 
 
 </head>
 	<?php
@@ -25,6 +25,8 @@
 		include_once "Seguridad/seguro.php";
 		// Si en la sesión activa tiene privilegios de administrador puede ver el formulario
 		if($_SESSION["PrivilegioUsuario"] == 1){
+			// Guardamos el nombre del usuario en una variable
+			$NombreUsuario =$_SESSION["NombreUsuario"];
 		?>
 			<body>
 				<nav class="navbar navbar-default">
@@ -50,6 +52,16 @@
 								<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Cerrar Sesión<span class="caret"></span></a>
 									<ul class="dropdown-menu" role="menu">
 										<li><a href="Seguridad/logout.php">Cerrar Sesión</a></li>
+									</ul>
+								</li>
+							</ul>
+							<ul class="nav navbar-nav navbar-right">
+								<li class="dropdown">
+									<!-- Acá mostramos el nombre del usuario -->
+									<a href="#" class="dropdown-toggle negrita" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $NombreUsuario; ?></a>
+									<!-- <span class="caret"></span> Agrega un indicador de flecha abajo -->
+									<ul class="dropdown-menu">
+										<li><a href="Seguridad/logout.php"><i class="fa fa-sign-out" aria-hidden="true">&nbsp;</i>Cerrar Sesión</a></li>
 									</ul>
 								</li>
 							</ul>

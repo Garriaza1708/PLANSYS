@@ -63,3 +63,16 @@ $(document).ready(function(){
 		$('#CorreoEmpleadoEditar').val(CorreoEmpleado);	
 	});
 });
+
+// Eliminación de empleado de la pantalla de empleados
+$(document).ready(function(){
+	$(document).on('click', '.EliminarEmpleado', function(){
+		var id=$(this).val();
+		var NombreEmpleado=$('#NombreEmpleado'+id).text();
+		var idEmpleado=$('#idEmpleado'+id).text();
+	
+		$('#frmEliminarEmpleado').modal('show');
+		$('#idEmpleadoAEliminar').val(idEmpleado);
+		document.querySelector('#NombreEmpleado').innerText = NombreEmpleado;
+	});
+});

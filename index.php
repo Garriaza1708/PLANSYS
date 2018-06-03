@@ -20,7 +20,7 @@
 			<!-- Temas-->
 			<link rel="stylesheet" href="css/bootstrap-theme.min.css">
 			<!-- se vincula al hoja de estilo para definir el aspecto del formulario de login-->  
-			<link rel="stylesheet" type="text/css" href="text/estilo.css">
+			<link rel="stylesheet" type="text/css" href="css/Modal.css">
 		</head>
     </head>
     <body>
@@ -108,9 +108,11 @@
 				if($ResultadoConsulta['NombreInicioSesionUsuario'] = $Usuario){
 					if($ResultadoConsulta['ContraseniaUsuario'] == $password){
 						session_start();
-						$_SESSION['NombreUsuario'] = $Usuario;
+						$_SESSION['Usuario'] = $ResultadoConsulta['NombreInicioSesionUsuario'];
+						$_SESSION['NombreUsuario'] = $ResultadoConsulta['NombreUsuario']." ".$ResultadoConsulta['ApellidoUsuario'];
 						$_SESSION['ContrasenaUsuario'] = $password;
 						$_SESSION['PrivilegioUsuario'] = $ResultadoConsulta['idRol'];
+						$_SESSION['idUsuario'] = $ResultadoConsulta['idUsuario'];
 						header("location:principal.php");
 					}
 					else{
