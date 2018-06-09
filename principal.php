@@ -13,8 +13,16 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="imagenes/plansys.ico">
 <title>PLANSYS</title>
-
+<style>
+body {
+        background-image: url("imagenes/plansys.png");
+		no-repeat left center;
+		background-size: cover;
+} 
+ 
+</style>
 <!-- Bootstrap -->
 <link href="css/bootstrap.css" rel="stylesheet">
 </head>
@@ -27,12 +35,13 @@
 			// Guardamos el nombre del usuario en una variable
 			$NombreUsuario =$_SESSION["NombreUsuario"];
 		?>
-			<body>
+			<body background="imagenes/plansys.png" >
 				<nav class="navbar navbar-default">
 					<div class="container-fluid"> 
 						<!-- Brand and toggle get grouped for better mobile display -->
 						<div class="navbar-header">
 						  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#defaultNavbar1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+						  <a class="navbar-brand" href="#"><img src="imagenes/plansys.png" class="img-circle" width="25" height="25"></a></div>
 						  <!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse" id="defaultNavbar1">
 							<ul class="nav navbar-nav">
@@ -72,21 +81,15 @@
 				<div class="container-fluid">
 				  <div class="row">
 					<div class="col-md-6 col-md-offset-3">
-					  <h1 class="text-center">PLANSYS</h1>
 					</div>
 				  </div>
 				</div>
-				<div class="container">
-					<div class="row text-center">
-						<div class="col-md-10 col-md-offset-1">Página principal de administración del sistema de planillas.</div>
-					</div>
 					<!-- Pie de página, se utilizará el mismo para todos. -->
 					<footer>
 						<hr>
 						<div class="row">
 							<div class="text-center col-md-6 col-md-offset-3">
-								<h4>PLANSYS</h4>
-								<p>Copyright &copy; 2018 &middot; All Rights Reserved &middot; <a href="http://www.umg.edu.gt/" >www.umg.edu.gt</a></p>
+
 							</div>
 						</div>
 						<hr>
