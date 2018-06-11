@@ -1,3 +1,5 @@
+DROP DATABASE PLANSYS;
+
 CREATE OR REPLACE DATABASE PLANSYS;
 
 USE PLANSYS;
@@ -58,3 +60,21 @@ CREATE OR REPLACE TABLE Empleado(
     DireccionEmpleado		VARCHAR(50)		NOT NULL,
     CorreoEmpleado			VARCHAR(50)		NOT NULL
 );
+
+CREATE OR REPLACE TABLE Planilla(
+	idPlanilla				TINYINT			NOT NULL			PRIMARY KEY			AUTO_INCREMENT,
+	idEmpleado				TINYINT			NOT NULL,
+	SueldoBase				DECIMAL(10,2)	NOT NULL,
+	HorasExtras				INTEGER(10)		NOT NULL,
+	BonificacionIncentivo	DECIMAL(10,2)	NOT NULL,
+	TotalDevengado			DECIMAL(10,2)	NOT NULL,
+	DescuentoIgss			DECIMAL(10,2)	NOT NULL,
+	DescuentoISR			DECIMAL(10,2)	NOT NULL,
+	TotalDescuento			DECIMAL(10,2)	NOT NULL,
+	INDEX (idEmpleado),
+	FOREIGN	KEY	(idEmpleado)
+        REFERENCES Empleado(idEmpleado)
+        ON DELETE CASCADE
+        ON UPDATE NO ACTION
+		);
+	

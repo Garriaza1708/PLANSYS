@@ -51,6 +51,11 @@ body {
 										<li><a href="Empleado.php">Lista de Empleados</a></li>	
 									</ul>
 								</li>
+								<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gestión de Pagos<span class="caret"></span></a>
+									<ul class="dropdown-menu" role="menu">
+										<li><a href="GenerarPlanilla.php">Generar Planilla</a></li>
+										<li><a href="ListarPlanilla.php">Lista de Planillas</a></li>
+									</ul>
 								<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gestion de Usuario<span class="caret"></span></a>
 									<ul class="dropdown-menu" role="menu">
 										<li><a href="CrearUsuario.php">Crear Usuario</a></li>
