@@ -23,6 +23,8 @@ body {
 } 
  
 </style>
+<body style="background-color:RGB(128, 128, 0);">
+</body>
 <!-- Bootstrap -->
 <link href="css/bootstrap.css" rel="stylesheet">
 </head>
@@ -31,7 +33,7 @@ body {
 		// Incluimos el archivo que valida si hay una sesión activa
 		include_once "Seguridad/seguro.php";
 		// Si en la sesión activa tiene privilegios de administrador puede ver el formulario
-		if($_SESSION["PrivilegioUsuario"] == 1){
+		if($_SESSION["PrivilegioUsuario"] == 1 || $_SESSION["PrivilegioUsuario"] == 2 || $_SESSION["PrivilegioUsuario"] == 3 || $_SESSION["PrivilegioUsuario"] == 4){
 			// Guardamos el nombre del usuario en una variable
 			$NombreUsuario =$_SESSION["NombreUsuario"];
 		?>
@@ -60,11 +62,6 @@ body {
 									<ul class="dropdown-menu" role="menu">
 										<li><a href="CrearUsuario.php">Crear Usuario</a></li>
 										<li><a href="Usuario.php">Lista de Usuarios</a></li>	
-									</ul>
-								</li>
-								<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Cerrar Sesión<span class="caret"></span></a>
-									<ul class="dropdown-menu" role="menu">
-										<li><a href="Seguridad/logout.php">Cerrar Sesión</a></li>
 									</ul>
 								</li>
 							</ul>

@@ -27,11 +27,11 @@
 		// Incluimos el archivo de conexión a la base de datos
 		include_once "Seguridad/conexion.php";
 		// Si en la sesión activa tiene privilegios de administrador puede ver el formulario
-		if($_SESSION["PrivilegioUsuario"] == '1'){
+		if($_SESSION["PrivilegioUsuario"] == 1){
 			// Guardamos el nombre del usuario en una variable
 			$NombreUsuario =$_SESSION["NombreUsuario"];
 		?>
-			<body>
+			<body">
 				<nav class="navbar navbar-default navbar-fixed-top">
 				  <div class="container-fluid"> 
 					<!-- Brand and toggle get grouped for better mobile display -->
@@ -47,15 +47,16 @@
 										<li><a href="Empleado.php">Lista de Empleados</a></li>	
 									</ul>
 								</li>
+								<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gestión de Pagos<span class="caret"></span></a>
+									<ul class="dropdown-menu" role="menu">
+										<li><a href="GenerarPlanilla.php">Generar Planilla</a></li>
+										<li><a href="ListarPlanilla.php">Lista de Planillas</a></li>
+									</ul>
+								</li>
 								<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gestión de Usuarios<span class="caret"></span></a>
 									<ul class="dropdown-menu" role="menu">
 										<li><a href="CrearUsuario.php">Crear usuario</a></li>
 										<li><a href="#">Lista de Usuarios</a></li>
-									</ul>
-								</li>
-								<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Cerrar Sesión<span class="caret"></span></a>
-									<ul class="dropdown-menu" role="menu">
-										<li><a href="Seguridad/logout.php">Cerrar Sesión</a></li>
 									</ul>
 								</li>
 							</ul>
@@ -405,7 +406,7 @@
 			} 
 			else{
 				echo "usuario no valido";
-				header("location:index.php");
+				header("location:principal.php");
 			}
 		?>
 </html>

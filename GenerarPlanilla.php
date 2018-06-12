@@ -28,7 +28,7 @@
 		// Primero hacemos la consulta en la tabla de persona
 		include_once "Seguridad/conexion.php";	
 		// Si en la sesión activa tiene privilegios de administrador puede ver el formulario
-		if($_SESSION["PrivilegioUsuario"] == 1){
+		if($_SESSION["PrivilegioUsuario"] == 1 || $_SESSION["PrivilegioUsuario"] == 2){
 			// Guardamos el nombre del usuario en una variable
 			$NombreUsuario =$_SESSION["NombreUsuario"];
 		?>
@@ -50,18 +50,13 @@
 								</li>
 								<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gestión de Pagos<span class="caret"></span></a>
 									<ul class="dropdown-menu" role="menu">
-										<li><a href="GenerarPlanilla.php">Generar Planilla</a></li>
+										<li><a href="#">Generar Planilla</a></li>
 										<li><a href="ListarPlanilla.php">Lista de Planillas</a></li>
 									</ul>
 								<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gestión de Usuarios<span class="caret"></span></a>
 									<ul class="dropdown-menu" role="menu">
 										<li><a href="CrearUsuario.php">Crear usuario</a></li>
 										<li><a href="Usuario.php">Lista de Usuarios</a></li>
-									</ul>
-								</li>
-								<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Cerrar Sesión<span class="caret"></span></a>
-									<ul class="dropdown-menu" role="menu">
-										<li><a href="Seguridad/logout.php">Cerrar Sesión</a></li>
 									</ul>
 								</li>
 							</ul>
@@ -82,7 +77,7 @@
 				</nav>
 
 				<div class="form-group">
-					<form name="CrearUsuario" action="CrearUsuario.php" method="post">
+					<form name="GenerarPlanilla" action="GenerarPlanilla.php" method="post">
 						<div class="container">
 							<div class="row text-center">
 								<div class="container-fluid">
@@ -95,7 +90,7 @@
 									
 										<div class="Icon">
 											<!-- Icono de usuario -->
-											<span class="glyphicon glyphicon-user"></span>
+											<span class="glyphicon glyphicon-pencil"></span>
 										</div>
 										<br>
 									<!-- Nombre del empleado -->
@@ -103,7 +98,7 @@
 									<div class="col-xs-6 col-xs-offset+1">
 									<div class="input-group input-group-lg">
 									<span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-user"></i></span>
-									<select class="form-control" name="Empleado" id="Empkeado" onchange="AnEventHasOccurred()">
+									<select class="form-control" name="Empleado" id="Empleado" onchange="AnEventHasOccurred()">
 													<option value="" disabled selected>Seleccione Empleado</option>
 													<!-- Contenido de la tabla -->
 														<!-- Acá mostraremos los bancos y seleccionaremos el que deseamos eliminar -->
@@ -149,21 +144,62 @@
 									<br>								
 									<!-- Registrar -->
 									<div class="row">
-										<div class="col-xs-12 col-xs-offset+1">
+									<div class="col-xs-12 col-xs-offset-1">
 											<div class="input-group input-group-lg">
 												<div clss="btn-group">
-													<input type="submit" name="AgregarUsuario" class="btn btn-success" value="Generar Datos">
-													<button type="button" class="btn btn-danger">Cancelar</button>
+											<button type="submit" class="btn btn-primary" id="GenerarPlanilla" name="enviar">Registrar</button>
+											<button type="button" class="btn btn-danger">Cancelar</button>
+												</div>
+											</div>
+									</div>
+							</div>
+						<br>
+					</div>
+				</div>
+			</form>
+			</div>
+				
+				<?php
+					include_once "Seguridad/conexion.php";
+					if (isset($_POST['enviar'])) {
+						// Obtenemos los valores de todos los campos y los almacenamos en variables
+						$Empleado=$_POST['Empleado'];
+						$SueldoBase=$_POST['SueldoBase'];
+						$BonificacionIncentivo=$_POST['BonificacionIncentivo'];
+						$HorasExtras=$_POST['HorasExtras'];
+												
+						// Creamos la consulta para la insersión de los datos
+						$Consulta = "INSERT INTO Planilla(IdEmpleado, SueldoBase, BonificacionIncentivo, HorasExtras) 
+						Values('".$Empleado."', '".$SueldoBase."', '".$BonificacionIncentivo."', '".$HorasExtras."');";
+							
+						if(!$resultado = $mysqli->query($Consulta)){
+							echo "Error: La ejecución de la consulta falló debido a: \n";
+							echo "Query: " . $Consulta . "\n";
+							echo "Error: " . $mysqli->errno . "\n";
+							exit;
+						}
+						else{
+						?>
+						<div class="form-group">
+								<form name="Alerta">
+									<div class="container">
+										<div class="row text-center">
+											<div class="container-fluid">
+												<div class="row">
+													<div class="col-xs-10 col-xs-offset-1">
+														<div class="alert alert-success">Planilla registrada</div>
+													</div>
 												</div>
 											</div>
 										</div>
 									</div>
-								</div>
+								</form>
 							</div>
-						</div>
-					</form>
-				</div>
-							
+						<?php
+						}
+					}
+				?>
+				
 				<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
 				<script src="js/jquery-1.11.3.min.js"></script>
 
@@ -186,7 +222,7 @@
 			} 
 			else{
 				echo "usuario no valido";
-				header("location:index.php");
+				header("location:principal.php");
 			}
 		?>
 </html>
