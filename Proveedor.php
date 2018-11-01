@@ -1,9 +1,9 @@
 <!--
-	Sistema de Pollo Express System
-	
-	Mario Roberto Hernandez Gonzalez
-	Gustavo Rodolfo Arriaza
-	Oscar Danilo Perez Juarez
+	Módulo de creación de Usuarios
+	Miércoles, 16 de mayo del 2018
+	11:20 PM
+	Gemis Daniel Guevara Villeda
+	UMG - Morales Izabal
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -42,7 +42,7 @@
 								<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gestión de Empleados<span class="caret"></span></a>
 									<ul class="dropdown-menu" role="menu">
 										<li><a href="CrearEmpleado.php">Crear empleado</a></li>
-										<li><a href="#">Lista de empleados</a></li>	
+										<li><a href="Empleado.php">Lista de empleados</a></li>	
 									</ul>
 								</li>
 								<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gestión de Clientes<span class="caret"></span></a>
@@ -60,7 +60,7 @@
 								<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gestión de Proveedores<span class="caret"></span></a>
 									<ul class="dropdown-menu" role="menu">
 										<li><a href="CrearProveedor.php">Crear proveedor</a></li>
-										<li><a href="Proveedor.php">Lista de proveedores</a></li>	
+										<li><a href="#">Lista de proveedores</a></li>	
 									</ul>
 								</li>
 								<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gestión de Pagos<span class="caret"></span></a>
@@ -100,7 +100,7 @@
 							<div class="container-fluid">
 								<div class="row">
 									<div class="col-xs-6 ">
-									<h1 class="text-center">Empleados registrados</h1>
+									<h1 class="text-center">Proveedores registrados</h1>
 									</div>
 									<!-- Contenedor del ícono del Usuario -->
 									<div class="col-xs-6 Icon">

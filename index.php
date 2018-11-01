@@ -1,20 +1,16 @@
 <!--
-	Sistema de Planillas
+	Sistema de Pollo Express System
 	
-	Gemis Daniel Guevara Villeda
+	Mario Roberto Hernandez Gonzalez
 	Gustavo Rodolfo Arriaza
-	Oseas Eli Lima Juarez
 	Oscar Danilo Perez Juarez
-	
-	-
-	-
 -->
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link rel="shortcut icon" href="imagenes/plansys.ico">
-        <title>PLANSYS</title>
+		<link rel="shortcut icon" href="imagenes/pes.ico">
+        <title>PES</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 			<!-- vinculo a bootstrap -->
 			<link rel="stylesheet" href="css/bootstrap.css">

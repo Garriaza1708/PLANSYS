@@ -76,3 +76,39 @@ $(document).ready(function(){
 		document.querySelector('#NombreEmpleado').innerText = NombreEmpleado;
 	});
 });
+
+// Edición de números de banco de la pantalla de clientes
+$(document).ready(function(){
+	$(document).on('click', '.EditarCliente', function(){
+		var id=$(this).val();
+		var idCliente=$('#idCliente'+id).text();
+		var NombreCliente=$('#NombreEmpleado'+id).text();
+		var ApellidoCliente=$('#ApellidoEmpleado'+id).text();
+		var TelefonoCliente=$('#TelefonoCliente'+id).text();
+		var DireccionCliente=$('#DireccionCliente'+id).text();
+		var FechaNacCliente=$('#FechaNacCliente'+id).text();
+		var NitCliente=$('#NitCliente'+id).text();
+					
+		$('#frmEditarCliente').modal('show');
+		$('#idClienteEditar').val(idCliente);
+		$('#NombreClienteEditar').val(NombreCliente);
+		$('#ApellidoClienteEditar').val(ApellidoCliente);
+		$('#TelefonoClienteEditar').val(TelefonoCliente);
+		$('#DireccionClienteEditar').val(DireccionCliente);
+		$('#FechaNacClienteEditar').val(FechaNacCliente);
+		$('#NitClienteEditar').val(NitCliente);	
+	});
+});
+
+// Eliminación de empleado de la pantalla de empleados
+$(document).ready(function(){
+	$(document).on('click', '.EliminarCliente', function(){
+		var id=$(this).val();
+		var NombreCliente=$('#NombreCliente'+id).text();
+		var idCliente=$('#idCliente'+id).text();
+	
+		$('#frmEliminarCliente').modal('show');
+		$('#idClienteAEliminar').val(idCliente);
+		document.querySelector('#NombreCliente').innerText = NombreCliente;
+	});
+});

@@ -1,4 +1,4 @@
-<!--
+<<!--
 	Sistema de Pollo Express System
 	
 	Mario Roberto Hernandez Gonzalez
@@ -42,13 +42,13 @@
 								<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gestión de Empleados<span class="caret"></span></a>
 									<ul class="dropdown-menu" role="menu">
 										<li><a href="CrearEmpleado.php">Crear empleado</a></li>
-										<li><a href="#">Lista de empleados</a></li>	
+										<li><a href="Empleado.php">Lista de empleados</a></li>	
 									</ul>
 								</li>
 								<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gestión de Clientes<span class="caret"></span></a>
 									<ul class="dropdown-menu" role="menu">
 										<li><a href="CrearCliente.php">Crear cliente</a></li>
-										<li><a href="Cliente.php">Lista de clientes</a></li>
+										<li><a href="#">Lista de clientes</a></li>
 									</ul>
 								</li>
 								<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gestión de Productos<span class="caret"></span></a>
@@ -100,7 +100,7 @@
 							<div class="container-fluid">
 								<div class="row">
 									<div class="col-xs-6 ">
-									<h1 class="text-center">Empleados registrados</h1>
+									<h1 class="text-center">Clientes registrados</h1>
 									</div>
 									<!-- Contenedor del ícono del Usuario -->
 									<div class="col-xs-6 Icon">
@@ -116,13 +116,12 @@
 											<!-- Contenido -->
 											<tr>
 												<th>#</th>
-												<th>Código</th>
-												<th>Nombre</th>
+												<th>Nombres</th>
 												<th>Apellidos</th>
-												<th>Fecha de Nacimiento</th>
-												<th>Telefono</th>
+												<th>Teléfono</th>
 												<th>Dirección</th>
-												<th>Correo</th>
+												<th>Fecha de Nacimiento</th>
+												<th>Nit</th>
 											</tr>
 										</thead>
 										<!-- Cuerpo de la tabla -->
@@ -133,25 +132,24 @@
 													// Primero hacemos la consulta en la tabla de banco
 													include_once "Seguridad/conexion.php";
 													// Primero hacemos la consulta en la tabla de Cheque
-													$VerEmpleados= "SELECT * FROM empleado";
+													$VerClientes= "SELECT * FROM cliente";
 													// Hacemos la consulta
-													$resultado = $mysqli->query($VerEmpleados);
+													$resultado = $mysqli->query($VerClientes);
 														while ($row = mysqli_fetch_array($resultado)){
 															?>
 															<tr>
-															<td><span id="idEmpleado<?php echo $row['idEmpleado'];?>"><?php echo $row['idEmpleado'] ?></span></td>
-															<td><span id="CodigoEmpleado<?php echo $row['idEmpleado'];?>"><?php echo $row['CodigoEmpleado'] ?></span></td>
-															<td><span id="NombreEmpleado<?php echo $row['idEmpleado'];?>"><?php echo $row['NombreEmpleado'] ?></span></td>
-															<td><span id="ApellidoEmpleado<?php echo $row['idEmpleado'];?>"><?php echo $row['ApellidoEmpleado'] ?></span></td>
-															<td><span id="FechaNacEmpleado<?php echo $row['idEmpleado'];?>"><?php echo $row['FechaNacEmpleado'] ?></span></td>
-															<td><span id="TelefonoEmpleado<?php echo $row['idEmpleado'];?>"><?php echo $row['TelefonoEmpleado'] ?></span></td>
-															<td><span id="DireccionEmpleado<?php echo $row['idEmpleado'];?>"><?php echo $row['DireccionEmpleado'] ?></span></td>
-															<td><span id="CorreoEmpleado<?php echo $row['idEmpleado'];?>"><?php echo $row['CorreoEmpleado'] ?></span></td>
+															<td><span id="idCliente<?php echo $row['idCliente'];?>"><?php echo $row['idCliente'] ?></span></td>
+															<td><span id="NombreCliente<?php echo $row['idCliente'];?>"><?php echo $row['NombreCliente'] ?></span></td>
+															<td><span id="ApellidoCliente<?php echo $row['idCliente'];?>"><?php echo $row['ApellidoCliente'] ?></span></td>
+															<td><span id="TelefonoCliente<?php echo $row['idCliente'];?>"><?php echo $row['TelefonoCliente'] ?></span></td>
+															<td><span id="DireccionCliente<?php echo $row['idCliente'];?>"><?php echo $row['DireccionCliente'] ?></span></td>
+															<td><span id="FechaNacCliente<?php echo $row['idCliente'];?>"><?php echo $row['FechaNacCliente'] ?></span></td>
+															<td><span id="NitCliente<?php echo $row['idCliente'];?>"><?php echo $row['NitCliente'] ?></span></td>
 															<td>
 																<!-- Edición -->
 																<div>
 																	<div class="input-group input-group-lg">
-																		<button type="button" class="btn btn-success EditarEmpleado" value="<?php echo $row['idEmpleado']; ?>"><span class="glyphicon glyphicon-edit"></span></button>
+																		<button type="button" class="btn btn-success EditarCliente" value="<?php echo $row['idCliente']; ?>"><span class="glyphicon glyphicon-edit"></span></button>
 																	</div>
 																</div>
 															</td>
@@ -159,7 +157,7 @@
 																<!-- Eliminación -->
 																<div>
 																	<div class="input-group input-group-lg">
-																		<button type="button" class="btn btn-danger EliminarEmpleado" value="<?php echo $row['idEmpleado']; ?>"><span class="glyphicon glyphicon-minus"></span></button>
+																		<button type="button" class="btn btn-danger EliminarCliente" value="<?php echo $row['idCliente']; ?>"><span class="glyphicon glyphicon-minus"></span></button>
 																	</div>
 																</div>
 															</td>
@@ -176,20 +174,20 @@
 				</div>
 				
 				<!-- Edit Modal-->
-					<div class="modal fade" id="frmEliminarEmpleado" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal fade" id="frmEliminarCliente" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 						<div class="modal-dialog">
 							<div class="modal-content">
 								<div class="modal-header">
 									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-									<center><h1 class="modal-title" id="myModalLabel">Eliminar empleado</h1></center>
+									<center><h1 class="modal-title" id="myModalLabel">Eliminar cliente</h1></center>
 								</div>
-								<form method="post" action="Empleado.php" id="myForm">
+								<form method="post" action="Cliente.php" id="myForm">
 								<div class="modal-body">
-									<p class="lead">¿Está seguro que desea eliminar el siguiente empleado?</p>
+									<p class="lead">¿Está seguro que desea eliminar el siguiente cliente?</p>
 									<div class="form-group input-group">
-										<input type="text" name="idEmpleadoAEliminar" style="width:350px; visibility:hidden;" class="form-control" id="idEmpleadoAEliminar">
+										<input type="text" name="idClienteAEliminar" style="width:350px; visibility:hidden;" class="form-control" id="idClienteAEliminar">
 										<br>
-										<label id="NombreEmpleado"></label>
+										<label id="NombreCliente"></label>
 								</div>
 								</div>
 								<div class="modal-footer">
@@ -203,12 +201,12 @@
 				<!-- /.modal -->
 				
 				<?php
-				// Código que recibe la información de eliminar empleado
+				// Código que recibe la información de eliminar cliente
 					if (isset($_POST['EliminarUsuario'])) {
 						// Guardamos el id en una variable
-						$idEmpleadoEliminar = $_POST['idEmpleadoAEliminar'];
+						$idClienteEliminar = $_POST['idClienteAEliminar'];
 						// Preparamos la consulta
-						$query = "DELETE FROM empleado WHERE idEmpleado=".$idEmpleadoEliminar.";";
+						$query = "DELETE FROM cliente WHERE idCliente=".$idClienteEliminar.";";
 						// Ejecutamos la consulta
 						if(!$resultado = $mysqli->query($query)){
     					echo "Error: La ejecución de la consulta falló debido a: \n";
@@ -226,7 +224,7 @@
 											<div class="container-fluid">
 												<div class="row">
 													<div class="col-xs-10 col-xs-offset-1">
-														<div class="alert alert-warning">Empleado eliminado</div>
+														<div class="alert alert-warning">Cliente eliminado</div>
 													</div>
 												</div>
 											</div>
@@ -236,44 +234,42 @@
 							</div>
     						<?php
 							// Recargamos la página
-    						echo "<meta http-equiv=\"refresh\" content=\"0;URL=Empleado.php\">"; 
+    						echo "<meta http-equiv=\"refresh\" content=\"0;URL=Cliente.php\">"; 
     					}
 					}
-				// Termina código para eliminar empleado
-					// Código para editar un empleado
-					if (isset($_POST['EditarEmpleado'])) {
+				// Termina código para eliminar cliente
+					// Código para editar un cliente
+					if (isset($_POST['EditarCliente'])) {
 						// Guardamos La información proveniente del formulario
-						$idEmpleadoEditar = $_POST['idEmpleadoEditar'];
-						$CodigoEmpleadoEditar = $_POST['CodigoEmpleadoEditar'];
-						$NombreEmpleadoEditar = $_POST['NombreEmpleadoEditar'];
-						$ApellidoEmpleadoEditar = $_POST['ApellidoEmpleadoEditar'];
-						$FechaNacEmpleadoEditar = $_POST['FechaNacEmpleadoEditar'];
-						$TelefonoEmpleadoEditar = $_POST['TelefonoEmpleadoEditar'];
-						$DireccionEmpleadoEditar = $_POST['DireccionEmpleadoEditar'];
-						$CorreoEmpleadoEditar = $_POST['CorreoEmpleadoEditar'];
+						$idClienteEditar = $_POST['idClienteEditar'];
+						$NombreClienteEditar = $_POST['NombreClienteEditar'];
+						$ApellidoClienteEditar = $_POST['ApellidoClienteEditar'];
+						$TelefonoClienteEditar = $_POST['TelefonoClienteEditar'];
+						$DireccionClienteEditar = $_POST['DireccionClienteEditar'];
+						$FechaNacClienteEditar = $_POST['FechaNacClienteEditar'];
+						$NitClienteEditar = $_POST['NitClienteEditar'];
 												
 				// Preparamos las consultas
-						$ConsultaEditarEmpleado = "UPDATE empleado
-								  SET CodigoEmpleado = '" .$CodigoEmpleadoEditar."',
-									  NombreEmpleado = '" .$NombreEmpleadoEditar."',
-									  ApellidoEmpleado = '" .$ApellidoEmpleadoEditar."',
-									  FechaNacEmpleado = '" .$FechaNacEmpleadoEditar."',
-									  TelefonoEmpleado = '".$TelefonoEmpleadoEditar."',
-									  DireccionEmpleado = '".$DireccionEmpleadoEditar."',
-									  CorreoEmpleado = '".$CorreoEmpleadoEditar."'									  
-									WHERE idEmpleado=".$idEmpleadoEditar.";";
+						$ConsultaEditarCliente = "UPDATE cliente
+								  SET NombreCliente = '" .$NombreClienteEditar."',
+									  ApellidoCliente = '" .$ApellidoClienteEditar."',
+									  TelefonoCliente = '".$TelefonoClienteEditar."',
+									  DireccionCliente = '".$DireccionClienteEditar."',
+									  FechaNacCliente = '" .$FechaNacClienteEditar."',
+									  NitCliente = '".$NitClienteEditar."'									  
+									WHERE idCliente=".$idClienteEditar.";";
 									
 							// Ejecutamos la consulta para la tabla de persona
-						if(!$resultado = $mysqli->query($ConsultaEditarEmpleado)){
+						if(!$resultado = $mysqli->query($ConsultaEditarCliente)){
 							echo "Error: La ejecución de la consulta falló debido a: \n";
-							echo "Query: " . $ConsultaEditarEmpleado . "\n";
+							echo "Query: " . $ConsultaEditarCliente . "\n";
 							echo "Errno: " . $mysqli->errno . "\n";
 							echo "Error: " . $mysqli->error . "\n";
 							exit;
 						}
 						else{
 							// Recargamos la página
-    						echo "<meta http-equiv=\"refresh\" content=\"0;URL=Empleado.php\">"; 
+    						echo "<meta http-equiv=\"refresh\" content=\"0;URL=Cliente.php\">"; 
 							?>
 								<div class="form-group">
 									<form name="Alerta">
@@ -282,7 +278,7 @@
 												<div class="container-fluid">
 													<div class="row">
 														<div class="col-xs-10 col-xs-offset-1">
-															<div class="alert alert-success">Empleado actualizado</div>
+															<div class="alert alert-success">Cliente actualizado</div>
 														</div>
 													</div>
 												</div>
@@ -294,56 +290,52 @@
     					}
 					}
 					
-					// Termina código para editar un Empleado
+					// Termina código para editar un Cliente
 				?>						
 				<!-- Edit Modal-->
-					<div class="modal fade" id="frmEditarEmpleado" tabindex="-2" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal fade" id="frmEditarCliente" tabindex="-2" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 						<div class="modal-dialog">
 							<div class="modal-content">
 								<div class="modal-header">
 									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-									<center><h4 class="modal-title" id="myModalLabel">Editar empleado</h4></center>
+									<center><h4 class="modal-title" id="myModalLabel">Editar cliente</h4></center>
 								</div>
-								<form method="post" action="Empleado.php" id="myForm">
+								<form method="post" action="Cliente.php" id="myForm">
 									<div class="modal-body">
 									<div class="container-fluid">
 											<div class="form-group input-group">
 												<span class="input-group-addon" style="width:150px;">ID</span>
-												<input type="text" style="width:350px;" class="form-control" name="idEmpleadoEditar" id="idEmpleadoEditar">
+												<input type="text" style="width:350px;" class="form-control" name="idClienteEditar" id="idClienteEditar">
 											</div>
 											<div class="form-group input-group">
-												<span class="input-group-addon" style="width:150px;">Código de Empleado</span>
-												<input type="text" style="width:350px;" class="form-control" name="CodigoEmpleadoEditar" id="CodigoEmpleadoEditar">
+												<span class="input-group-addon" style="width:150px;">Nombres del Cliente</span>
+												<input type="text" style="width:350px;" class="form-control" name="NombreClienteEditar" id="NombreClienteEditar">
 											</div>
 											<div class="form-group input-group">
-												<span class="input-group-addon" style="width:150px;">Nombres del Empleado</span>
-												<input type="text" style="width:350px;" class="form-control" name="NombreEmpleadoEditar" id="NombreEmpleadoEditar">
+												<span class="input-group-addon" style="width:150px;">Apellidos del Cliente</span>
+												<input type="text" style="width:350px;" class="form-control" name="ApellidoClienteEditar" id="ApellidoClienteEditar">
 											</div>
 											<div class="form-group input-group">
-												<span class="input-group-addon" style="width:150px;">Apellidos del Empleado</span>
-												<input type="text" style="width:350px;" class="form-control" name="ApellidoEmpleadoEditar" id="ApellidoEmpleadoEditar">
+												<span class="input-group-addon" style="width:150px;">Telefono del Cliente</span>
+												<input type="tel" style="width:350px;" class="form-control" name="TelefonoClienteEditar" id="TelefonoClienteEditar">
 											</div>
 											<div class="form-group input-group">
-												<span class="input-group-addon" style="width:150px;">Fecha Nacimiento del Empleado</span>
-												<input type="date" style="width:350px;" class="form-control" name="FechaNacEmpleadoEditar" id="FechaNacEmpleadoEditar">
+												<span class="input-group-addon" style="width:150px;">Direccion del Cliente</span>
+												<input type="text" style="width:350px;" class="form-control" name="DireccionClienteEditar" id="DireccionClienteEditar">
+											</div>		
+											<div class="form-group input-group">
+												<span class="input-group-addon" style="width:150px;">Fecha Nacimiento del Cliente</span>
+												<input type="date" style="width:350px;" class="form-control" name="FechaNacClienteEditar" id="FechaNacClienteEditar">
 											</div>
 											<div class="form-group input-group">
-												<span class="input-group-addon" style="width:150px;">Telefono del Empleado</span>
-												<input type="tel" style="width:350px;" class="form-control" name="TelefonoEmpleadoEditar" id="TelefonoEmpleadoEditar">
-											</div>
-											<div class="form-group input-group">
-												<span class="input-group-addon" style="width:150px;">Direccion del Empleado</span>
-												<input type="text" style="width:350px;" class="form-control" name="DireccionEmpleadoEditar" id="DireccionEmpleadoEditar">
-											</div>			
-											<div class="form-group input-group">
-												<span class="input-group-addon" style="width:150px;">Correo del Empleado</span>
-												<input type="email" style="width:350px;" class="form-control" name="CorreoEmpleadoEditar" id="CorreoEmpleadoEditar">
+												<span class="input-group-addon" style="width:150px;">Nit del Cliente</span>
+												<input type="text" style="width:350px;" class="form-control" name="NitClienteEditar" id="NitClienteEditar">
 											</div>
 										</div>
 									</div>
 									<div class="modal-footer">
 										<button type="button" class="btn btn-success" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
-										<input type="submit" name="EditarEmpleado" class="btn btn-warning" value="Editar">
+										<input type="submit" name="EditarCliente" class="btn btn-warning" value="Editar">
 									</div>
 								</form>
 							</div>

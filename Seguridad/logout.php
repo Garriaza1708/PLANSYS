@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-		<title>PLANSYS</title>
+		<title>PES</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Cerrar sesión</title>
     </head>

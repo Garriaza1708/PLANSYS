@@ -1,9 +1,8 @@
 <!--
 	Módulo de creación de Usuarios
+	Miércoles, 16 de mayo del 2018
+	11:20 PM
 	Gemis Daniel Guevara Villeda
-	Gustavo Rodolfo Arriaza
-	Oseas Eli Lima Juarez
-	Oscar Danilo Perez Juarez
 	UMG - Morales Izabal
 -->
 <!DOCTYPE html>
@@ -25,10 +24,10 @@
 		//include_once 'Seguridad/conexion.php';
 		// Incluimos el archivo que valida si hay una sesión activa
 		include_once "Seguridad/seguro.php";
-		// Primero hacemos la consulta en la tabla de persona
-		include_once "Seguridad/conexion.php";	
+		// Incluimos el archivo para la conexión
+		include_once "Seguridad/conexion.php";
 		// Si en la sesión activa tiene privilegios de administrador puede ver el formulario
-		if($_SESSION["PrivilegioUsuario"] == 1 || $_SESSION["PrivilegioUsuario"] == 2){
+		if($_SESSION["PrivilegioUsuario"] == 1 || $_SESSION["PrivilegioUsuario"] == 3){
 			// Guardamos el nombre del usuario en una variable
 			$NombreUsuario =$_SESSION["NombreUsuario"];
 		?>
@@ -38,7 +37,7 @@
 					<!-- Brand and toggle get grouped for better mobile display -->
 					<div class="navbar-header">
 					  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#defaultNavbar1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-					   <a class="navbar-brand" href="Principal.php"><img src="imagenes/pes.png" class="img-circle" width="25" height="25"></a></div>
+					  <a class="navbar-brand" href="principal.php"><img src="imagenes/pes.png" class="img-circle" width="25" height="25"></a></div>
 					  <!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse" id="defaultNavbar1">
 							<ul class="nav navbar-nav">
@@ -62,13 +61,13 @@
 								</li>
 								<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gestión de Proveedores<span class="caret"></span></a>
 									<ul class="dropdown-menu" role="menu">
-										<li><a href="CrearProveedor.php">Crear proveedor</a></li>
+										<li><a href="#">Crear proveedor</a></li>
 										<li><a href="Proveedor.php">Lista de proveedores</a></li>	
 									</ul>
 								</li>
 								<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gestión de Pagos<span class="caret"></span></a>
 									<ul class="dropdown-menu" role="menu">
-										<li><a href="#">Generar planilla</a></li>
+										<li><a href="GenerarPlanilla.php">Generar planilla</a></li>
 										<li><a href="ListarPlanilla.php">Lista de pagos</a></li>	
 									</ul>
 								</li>
@@ -94,119 +93,126 @@
 					</div>
 				  <!-- /.container-fluid --> 
 				</nav>
-
 				<div class="form-group">
-					<form name="GenerarPlanilla" action="GenerarPlanilla.php" method="post">
+					<form name="CrearEmpleado" action="CrearEmpleado.php" method="post">
 						<div class="container">
 							<div class="row text-center">
 								<div class="container-fluid">
 									<div class="row">
 										<div class="col-xs-6 col-xs-offset-3">
-										<h1 class="text-center">Creación de Planilla</h1>
+										<h2 class="text-center">Creación de proveedores</h2>
+										<br>
 										</div>
 									</div>
-									<!-- Contenedor del ícono del Usuario -->
-									
-										<div class="Icon">
-											<!-- Icono de usuario -->
-											<span class="glyphicon glyphicon-pencil"></span>
-										</div>
-										<br>
-									<!-- Nombre del empleado -->
-									<div class="row">
-									<div class="col-xs-6 col-xs-offset+1">
-									<div class="input-group input-group-lg">
-									<span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-user"></i></span>
-									<select class="form-control" name="Empleado" id="Empleado" onchange="AnEventHasOccurred()">
-													<option value="" disabled selected>Seleccione Empleado</option>
-													<!-- Contenido de la tabla -->
-														<!-- Acá mostraremos los bancos y seleccionaremos el que deseamos eliminar -->
-														<?php							
-															$VerEmpleado = "SELECT * FROM Empleado";
-															// Hacemos la consulta
-															$resultado = $mysqli->query($VerEmpleado);			
-																while ($row = mysqli_fetch_array($resultado)){
-																	?>
-																	<option value="<?php echo $row['idEmpleado'];?>"><?php echo $row['NombreEmpleado']." ". $row['ApellidoEmpleado'] ?></option>
-														<?php
-																}
-														?>
-												</select>	
-											</div>
-										</div>
-									<!-- Ingrese Sueldo Base -->
-									<div class="col-xs-6 col-xs-offset+1">
+									<!-- Codigo del Empleado -->
+								<div class="row">
+										<div class="col-xs-3 col-xs-offset-1">
 											<div class="input-group input-group-lg">
-												<span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-usd"></i></span>
-												<input type="text" class="form-control" name="SueldoBase" placeholder="Sueldo Base" id="SueldoBase" aria-describedby="sizing-addon1" required>
+												<span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-pencil"></i></span>
+												<input type="text" class="form-control" name="CodigoEmpleado" placeholder="Codigo de Empleado" id="CodigoEmpleado" aria-describedby="sizing-addon1" required>
 											</div>
 										</div>
+									<!-- Nombre del Empleado -->
+									<div class="col-xs-4 col-xs-offset+1">
+										<div class="input-group input-group-lg">
+											<span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-pencil"></i></span>
+											<input type="text" class="form-control" name="NombreEmpleado" placeholder="Nombres del Empleado" id="NombreEmpleado" aria-describedby="sizing-addon1" required>
+										</div>
+									</div>
+								
+								<!-- Apellidos del Empleado -->
+									<div class="col-xs-4 col-xs-offset+1">
+										<div class="input-group input-group-lg">
+											<span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-pencil"></i></span>
+											<input type="text" class="form-control" name="ApellidoEmpleado" placeholder="Apellidos del Empleado" id="ApellidoEmpleado" aria-describedby="sizing-addon1" required>
+										</div>
+									</div>
 									</div>
 									<br>
-									<!-- Ingrese Horas Extras -->
-									<div class="row">
-									<div class="col-xs-6 col-xs-offset+1">
-											<div class="input-group input-group-lg">
-												<span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-time"></i></span>
-												<input type="text" class="form-control" name="HorasExtras" placeholder="Horas Extras" id="HorasExtras" aria-describedby="sizing-addon1" required>
-											</div>
-										</div>
-									
-									<!-- Ingrese Bonificacion Incentivo -->
-									<div class="col-xs-6 col-xs-offset+1">
-											<div class="input-group input-group-lg">
-												<span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-usd"></i></span>
-												<input type="text" class="form-control" name="BonificacionIncentivo" placeholder="Bonificacion Incentivo" id="BonificacionIncentivo" aria-describedby="sizing-addon1" required>
-											</div>
+									<!-- Fecha de Nacimiento -->
+									<div class="row">									
+									<div class="col-xs-3 col-xs-offset-1">
+										<div class="input-group input-group-lg">
+											<span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-calendar"></i></span>
+											<input type="date" class="form-control" name="FechaNacEmpleado" placeholder="Fecha de Nacimiento" id="FechaNacEmpleado" aria-describedby="sizing-addon1" required>
 										</div>
 									</div>
-									<br>								
+									<!-- Numero de Telefono -->
+									<div class="col-xs-4 col-xs-offset+1">
+										<div class="input-group input-group-lg">
+											<span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-pencil"></i></span>
+											<input type="tel" class="form-control" name="TelefonoEmpleado" placeholder="Numero de Telefono" id="TelefonoEmpleado" aria-describedby="sizing-addon1" required>
+										</div>
+									</div>
+									<!-- Direccion -->
+									<div class="col-xs-4 col-xs-offset+1">
+										<div class="input-group input-group-lg">
+											<span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-pencil"></i></span>
+											<input type="text" class="form-control" name="DireccionEmpleado" placeholder="Dirección" id="DireccionEmpleado" aria-describedby="sizing-addon1" required>
+										</div>
+									</div>
+								</div>
+								</br>
+									<!-- Correo -->
+								<div class="row">
+									<div class="col-xs-10 col-xs-offset+1 col-xs-offset-1">
+										<div class="input-group input-group-lg">
+											<span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-pencil"></i></span>
+											<input type="email" class="form-control" name="CorreoEmpleado" placeholder="Correo Electronico" id="CorreoEmpleado" aria-describedby="sizing-addon1" required>
+										</div>
+									</div>
+								</div>
+								<br>
+								</div>
+								</br>
 									<!-- Registrar -->
-									<div class="row">
-									<div class="col-xs-12 col-xs-offset-1">
-											<div class="input-group input-group-lg">
-												<div clss="btn-group">
-											<button type="submit" class="btn btn-primary" id="GenerarPlanilla" name="enviar">Registrar</button>
-											<button type="button" class="btn btn-danger">Cancelar</button>
-												</div>
+								<div class="row">
+									<div class="col-xs-11 col-xs-offset-1">
+										<div class="input-group input-group-lg">
+											<div clss="btn-group">
+												<button type="submit" class="btn btn-primary" id="CrearEmpleado" name="enviar">Registrar</button>
+												<button type="button" class="btn btn-danger">Cancelar</button>
 											</div>
+										</div>
 									</div>
+								</div>
+								<br>
+								</div>
 							</div>
-						<br>
-					</div>
+						</form>
 				</div>
-			</form>
-			</div>
-				
 				<?php
-					include_once "Seguridad/conexion.php";
-					if (isset($_POST['enviar'])) {
-						// Obtenemos los valores de todos los campos y los almacenamos en variables
-						$Empleado=$_POST['Empleado'];
-						$SueldoBase=$_POST['SueldoBase'];
-						$BonificacionIncentivo=$_POST['BonificacionIncentivo'];
-						$HorasExtras=$_POST['HorasExtras'];
-												
-						// Creamos la consulta para la insersión de los datos
-						$Consulta = "INSERT INTO Planilla(IdEmpleado, SueldoBase, BonificacionIncentivo, HorasExtras) 
-						Values('".$Empleado."', '".$SueldoBase."', '".$BonificacionIncentivo."', '".$HorasExtras."');";
+				// Registramos un cheque
+				if (isset($_POST['enviar'])) {
+					// Obtenemos los valores de todos los campos y los almacenamos en variables
+					$CodigoEmpleado=$_POST['CodigoEmpleado'];
+					$NombreEmpleado=$_POST['NombreEmpleado'];
+					$ApellidoEmpleado=$_POST['ApellidoEmpleado'];
+					$FechaNacEmpleado=$_POST['FechaNacEmpleado'];
+					$TelefonoEmpleado=$_POST['TelefonoEmpleado'];
+					$DireccionEmpleado=$_POST['DireccionEmpleado'];
+					$CorreoEmpleado=$_POST['CorreoEmpleado'];
+					
+					// Creamos la consulta para la inserción de los datos
+						$query = "INSERT INTO Empleado(CodigoEmpleado, NombreEmpleado, ApellidoEmpleado, FechaNacEmpleado, TelefonoEmpleado, DireccionEmpleado, CorreoEmpleado) 
+												 Values('".$CodigoEmpleado."', '".$NombreEmpleado."', '".$ApellidoEmpleado."', '".$FechaNacEmpleado."', '".$TelefonoEmpleado."', '".$DireccionEmpleado."', '".$CorreoEmpleado."');";
 							
-						if(!$resultado = $mysqli->query($Consulta)){
+						if(!$resultado = $mysqli->query($query)){
 							echo "Error: La ejecución de la consulta falló debido a: \n";
-							echo "Query: " . $Consulta . "\n";
+							echo "Query: " . $query . "\n";
 							echo "Error: " . $mysqli->errno . "\n";
 							exit;
 						}
 						else{
 						?>
-						<div class="form-group">
+							<div class="form-group">
 								<form name="Alerta">
 									<div class="container">
 										<div class="row text-center">
 											<div class="container-fluid">
 												<div class="row">
 													<div class="col-xs-10 col-xs-offset-1">
-														<div class="alert alert-success">Planilla registrada</div>
+														<div class="alert alert-success">Proveedor registrado</div>
 													</div>
 												</div>
 											</div>
@@ -216,9 +222,9 @@
 							</div>
 						<?php
 						}
-					}
+				}
 				?>
-				
+						
 				<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
 				<script src="js/jquery-1.11.3.min.js"></script>
 
