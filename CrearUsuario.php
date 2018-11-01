@@ -1,9 +1,10 @@
 <!--
-	Sistema de Pollo Express System
-	
-	Mario Roberto Hernandez Gonzalez
+	Módulo de creación de Usuarios
+	Gemis Daniel Guevara Villeda
 	Gustavo Rodolfo Arriaza
+	Oseas Eli Lima Juarez
 	Oscar Danilo Perez Juarez
+	UMG - Morales Izabal
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -11,8 +12,8 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="shortcut icon" href="imagenes/PES.ico">
-<title>PES</title>
+<link rel="shortcut icon" href="imagenes/plansys.ico">
+<title>PLANSYS</title>
 
 <!-- Bootstrap -->
 <link href="css/bootstrap.css" rel="stylesheet">
@@ -37,44 +38,26 @@
 					<!-- Brand and toggle get grouped for better mobile display -->
 					<div class="navbar-header">
 					  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#defaultNavbar1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-					  <a class="navbar-brand" href="principal.php"><img src="imagenes/pes.png" class="img-circle" width="25" height="25"></a></div>
+					  <a class="navbar-brand" href="principal.php"><img src="imagenes/plansys.png" class="img-circle" width="25" height="25"></a></div>
 					  <!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse" id="defaultNavbar1">
 							<ul class="nav navbar-nav">
 								<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gestión de Empleados<span class="caret"></span></a>
 									<ul class="dropdown-menu" role="menu">
-										<li><a href="CrearEmpleado.php">Crear empleado</a></li>
-										<li><a href="Empleado.php">Lista de empleados</a></li>	
-									</ul>
-								</li>
-								<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gestión de Clientes<span class="caret"></span></a>
-									<ul class="dropdown-menu" role="menu">
-										<li><a href="CrearCliente.php">Crear cliente</a></li>
-										<li><a href="Cliente.php">Lista de clientes</a></li>
-									</ul>
-								</li>
-								<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gestión de Productos<span class="caret"></span></a>
-									<ul class="dropdown-menu" role="menu">
-										<li><a href="CrearProducto.php">Ingresar producto</a></li>
-										<li><a href="Producto.php">Lista de productos</a></li>	
-									</ul>
-								</li>
-								<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gestión de Proveedores<span class="caret"></span></a>
-									<ul class="dropdown-menu" role="menu">
-										<li><a href="CrearProveedor.php">Crear proveedor</a></li>
-										<li><a href="Proveedor.php">Lista de proveedores</a></li>	
+										<li><a href="CrearEmpleado.php">Crear Empleado</a></li>
+										<li><a href="Empleado.php">Lista de Empleados</a></li>	
 									</ul>
 								</li>
 								<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gestión de Pagos<span class="caret"></span></a>
 									<ul class="dropdown-menu" role="menu">
-										<li><a href="GenerarPlanilla.php">Generar planilla</a></li>
-										<li><a href="ListarPlanilla.php">Lista de pagos</a></li>	
+										<li><a href="GenerarPlanilla.php">Generar Planilla</a></li>
+										<li><a href="ListarPlanilla.php">Lista de Planillas</a></li>
 									</ul>
 								</li>
-								<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gestión de Usuario<span class="caret"></span></a>
+								<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gestión de Usuarios<span class="caret"></span></a>
 									<ul class="dropdown-menu" role="menu">
 										<li><a href="#">Crear usuario</a></li>
-										<li><a href="Usuario.php">Lista de usuarios</a></li>	
+										<li><a href="Usuario.php">Lista de Usuarios</a></li>
 									</ul>
 								</li>
 							</ul>
@@ -534,7 +517,7 @@
 					<hr>
 					<div class="row">
 						<div class="text-center col-md-6 col-md-offset-3">
-							<h4>PES</h4>
+							<h4>PLANSYS</h4>
 							<p>Copyright &copy; 2018 &middot; All Rights Reserved &middot; <a href="http://www.umg.edu.gt/" >www.umg.edu.gt</a></p>
 						</div>
 					</div>

@@ -7,14 +7,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>PES</title>
+        <title>PLANSYS</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body>
 		<?php
 		   // Datos para la conexión a la base de datos.
 			define('DB_SERVER', 'localhost');
-			define('DB_NAME', 'bdpolloexp');
+			define('DB_NAME', 'plansys');
 			define('DB_USER', 'root');
 			define('DB_PASS', '');
 			
